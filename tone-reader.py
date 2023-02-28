@@ -6,6 +6,7 @@ import pandas as pd
 def reddit_api_login(client_key_filename: str) -> praw.Reddit:
     f = open(client_key_filename, "r")
     client_id, client_secret, user_agent = f.readline().split(',')
+    f.close()
     
     reddit = praw.Reddit(
         client_id=client_id,
@@ -16,7 +17,7 @@ def reddit_api_login(client_key_filename: str) -> praw.Reddit:
 
 # Aggregates all comments with '/s' in a Reddit thread to a list of dictionaries
 def aggregate_reddit_thread(submission_string: str, reddit: praw.Reddit) -> list[dict]:
-    submission = reddit.submission(submission_string)
+    submission = reddit.submission(id=submission_string)
 
     # List of dictionaries that will be converted to DataFrame
     list_of_dicts = list()
@@ -27,7 +28,7 @@ def aggregate_reddit_thread(submission_string: str, reddit: praw.Reddit) -> list
         
         if label_idx != -1 and comment.body.find('http') == -1:
             comment_clean = clean_comment(comment.body[:label_idx])
-            list_of_dicts.append({"Comment": comment_clean, "Label": 1})
+            list_of_dicts.append({"Comment": comment_clean, "Label": 1, "Submission String": submission_string})
     
     return list_of_dicts
     
