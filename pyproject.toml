@@ -33,7 +33,7 @@ classifiers = [
 file = "LICENSE"
 
 [project.urls]
-repository = "https://github.com/DavidNguyen2002/tone-reader"
+repository = "https://github.com/DavidNguyen2002/tonereader"
 
 [project.optional-dependencies]
 develop = [

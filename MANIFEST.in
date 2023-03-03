@@ -1,4 +1,4 @@
-graft tone-reader
+graft tonereader
 
 include LICENSE
 include README.md
