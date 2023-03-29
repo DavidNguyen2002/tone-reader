@@ -55,11 +55,11 @@ def decontracted(phrase: str) -> str:
 # Lemmatizes sentence
 
 
-def lemmatize(text: str, nlp: spacy.Language) -> list:
+def lemmatize(text: str, nlp: spacy.Language = spacy.load('en_core_web_sm')) -> list:
     return [token.lemma_ for token in nlp(text)]
 
 
-def clean_comment(comment: str, nlp: spacy.Language) -> list:
+def clean_comment(comment: str, nlp: spacy.Language = spacy.load('en_core_web_sm')) -> list:
     # Maybe implement stop word list?
 
     comment = comment.lower()
@@ -158,8 +158,8 @@ def is_sarcastic_helper(
     df_ngram_count_notsarcastic,
     df_ngram_prev_count_sarcastic,
     df_ngram_prev_count_notsarcastic,
+    nlp: spacy.Language = spacy.load('en_core_web_sm'),
 ):
-    nlp = spacy.load("en_core_web_sm")
     text_list = clean_comment(text, nlp)
     text_ngrams = get_ngrams(text_list, n)
 
@@ -226,6 +226,8 @@ def test_ngrams(test_csv: str, n: int):
         f"tonereader/data/ngram_prev_notsarcastic_count_{n}.csv", converters={"unique_values": literal_eval}
     )
 
+    nlp = spacy.load("en_core_web_sm")
+
     def get_result(row):
         return (
             is_sarcastic_helper(
@@ -235,12 +237,10 @@ def test_ngrams(test_csv: str, n: int):
                 df_ngram_count_notsarcastic,
                 df_ngram_prev_count_sarcastic,
                 df_ngram_prev_count_notsarcastic,
+                nlp,
             )
             == row['label']
         )
 
     test_file["result"] = test_file.apply(lambda row: get_result(row), axis=1)
     return sum(test_file['result']) / len(test_file.index)
-
-
-print(is_sarcastic("I love open source"))

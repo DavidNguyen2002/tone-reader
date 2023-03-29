@@ -18,7 +18,7 @@ def test_lemmatize():
 
 
 def test_is_sarcastic():
-    test1 = "Yeah, I love spending time with you"
+    test1 = "wow i am soooo impressed"
     test2 = "I love open source"
     assert is_sarcastic(test1)
     assert not is_sarcastic(test2)
