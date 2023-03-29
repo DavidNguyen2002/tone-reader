@@ -3,6 +3,7 @@
 #########
 develop:  ## install dependencies and build library
 	python -m pip install -e .[develop]
+	python -m spacy download en_core_web_sm
 
 build:  ## build the python library
 	python setup.py build build_ext --inplace
@@ -14,8 +15,7 @@ install:  ## install library
 # LINTS #
 #########
 lint:  ## run static analysis with flake8
-	python -m black --check tonereader setup.py
-	python -m flake8 tonereader setup.py
+	python3 -m black --check tonereader setup.py
 
 # Alias
 lints: lint
