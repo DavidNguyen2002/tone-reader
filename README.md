@@ -9,4 +9,30 @@ A Python library that detects sarcasm in text.
 
 ## Overview
 
-Using training data from social media platforms like Twitter and Reddit, tonereader can analyze text and determine whether or not the speaker is being sarcastic.
+Have you ever read a message from someone and were unsure about whether they were being serious or not? Is it difficult for you to figure out of someone is being sarcastic through text? Now, tonereader can help you with that!
+
+Using training data from Reddit, tonereader can analyze text and determine whether or not the speaker is being sarcastic. So far, this library uses an ngram model which does not yield great results; however, I would like to make this project more sophisticated in the future.
+
+## Installation
+
+To install tonereader, simply run
+
+```bash
+pip install tonereader
+```
+
+## Usage
+
+Right now, most of the methods written are used to train the model. These methods allow you to pass in more training data into the model.
+
+To use the sarcasm-detecting function, simply run
+
+```python
+is_sarcastic(text)
+```
+
+which will return a boolean.
+
+## Future plans
+
+For the future, I would like this project to use a more sophisticated model to determine sarcasm. I would also like to add the ability to detect more tones/emotions as well.
