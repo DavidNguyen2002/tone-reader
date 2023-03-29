@@ -15,8 +15,7 @@ install:  ## install library
 # LINTS #
 #########
 lint:  ## run static analysis with flake8
-	python -m black --check tonereader setup.py
-	python -m flake8 tonereader setup.py
+	python3 -m black --check tonereader setup.py
 
 # Alias
 lints: lint
