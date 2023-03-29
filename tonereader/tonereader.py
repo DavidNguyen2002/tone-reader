@@ -114,7 +114,7 @@ def train_ngram(n: int):
         
 # Add smoothing later to take into account OOV words
 
-def is_sarcastic(text: str, n: int):
+def is_sarcastic(text: str, n:int = 3):
     df_ngram_count_sarcastic = pd.read_csv(f"tonereader/data/ngram_sarcastic_count_{n}.csv", converters={"unique_values": literal_eval})
     df_ngram_count_notsarcastic = pd.read_csv(f"tonereader/data/ngram_notsarcastic_count_{n}.csv", converters={"unique_values": literal_eval})
     df_ngram_prev_count_sarcastic = pd.read_csv(f"tonereader/data/ngram_prev_sarcastic_count_{n}.csv", converters={"unique_values": literal_eval})
@@ -184,3 +184,5 @@ def test_ngrams(test_csv: str, n: int):
         
     test_file["result"] = test_file.apply(lambda row: get_result(row), axis=1)
     return sum(test_file['result']) / len(test_file.index)
+
+print(is_sarcastic("I love open source"))
