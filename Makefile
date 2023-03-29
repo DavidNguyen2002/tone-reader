@@ -3,6 +3,7 @@
 #########
 develop:  ## install dependencies and build library
 	python -m pip install -e .[develop]
+	python -m spacy download en_core_web_sm
 
 build:  ## build the python library
 	python setup.py build build_ext --inplace
