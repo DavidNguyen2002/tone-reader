@@ -173,7 +173,7 @@ def is_sarcastic_helper(
     def get_index(li: list, val: tuple):
         try:
             return li.index(val)
-        except:
+        except Exception as ex:
             return -1
 
     prob_sar = 0
