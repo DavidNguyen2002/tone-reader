@@ -98,7 +98,7 @@ def train_ngram(n: int):
     try:
         df_ngram = pd.read_csv(f"tonereader/data/ngrams_{n}.csv", converters={"ngram": literal_eval})
         df_ngram_prev = pd.read_csv(f"tonereader/data/ngrams_{n-1}.csv", converters={"ngram": literal_eval})
-    except:
+    except Exception:
         read_ngrams("train-balanced-sarcasm.csv", n, f"tonereader/data/ngrams_{n}.csv")
         read_ngrams("train-balanced-sarcasm.csv", n - 1, f"tonereader/data/ngrams_{n-1}.csv")
         df_ngram = pd.read_csv(f"tonereader/data/ngrams_{n}.csv", converters={"ngram": literal_eval})
@@ -173,7 +173,7 @@ def is_sarcastic_helper(
     def get_index(li: list, val: tuple):
         try:
             return li.index(val)
-        except Exception as ex:
+        except Exception:
             return -1
 
     prob_sar = 0
