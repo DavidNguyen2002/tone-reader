@@ -209,7 +209,7 @@ def is_sarcastic_helper(
     return True if prob_sar > prob_notsar else False
 
 
-def test_ngrams(test_csv: str, n: int):
+def ngram_test(test_csv: str, n: int):
     test_file = pd.read_csv(test_csv, usecols=['text', 'sarcastic']).dropna()
     test_file.columns = ['comment', 'label']
 

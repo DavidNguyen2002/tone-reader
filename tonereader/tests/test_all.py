@@ -40,7 +40,7 @@ def test_clean_comment():
     assert clean_comment(test) == ['the', 'quick', 'brown', 'fox', 'jump', 'over', 'the', 'lazy', 'dog']
 
 
-def test_test_ngrams():
+def test_ngram_test():
     test_file = "tonereader/data/task_A_En_test.csv"
     n = 3
-    assert test_ngrams(test_file, n) > 0.5
+    assert ngram_test(test_file, n) > 0.5
