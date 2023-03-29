@@ -14,7 +14,7 @@ def test_lemmatize():
     assert lemmatize(test) == ["you", "be", "go", "to", "the", "store", ".", "I", "eat", "an", "apple", "."]
     
 def test_is_sarcastic():
-    test1 = "Yeah, I love spending time with you. /s"
+    test1 = "Yeah, I love spending time with you"
     test2 = "I love open source"
     assert is_sarcastic(test1)
     assert not is_sarcastic(test2)
@@ -27,3 +27,8 @@ def test_get_ngrams():
 def test_clean_comment():
     test = "The quick 🏃 brown 🐴 fox 🦊 jumps over 😭 the lazy 💤😴 dog 🐶"
     assert clean_comment(test) == ['the', 'quick', 'brown', 'fox', 'jump', 'over', 'the', 'lazy', 'dog']
+
+def test_test_ngrams():
+    test_file = "tonereader/data/task_A_En_test.csv"
+    n = 3
+    assert test_ngrams(test_file, n) > 0.5
