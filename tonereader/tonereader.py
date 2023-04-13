@@ -4,6 +4,7 @@ import re
 import pandas as pd
 from ast import literal_eval
 
+
 def is_sarcastic(text: str, n: int = 3) -> bool:
     """Function that determines whether an input text is sarcastic
 
@@ -14,7 +15,7 @@ def is_sarcastic(text: str, n: int = 3) -> bool:
     Returns:
         bool: Boolean that is `True` when the text is sarcastic and `false` when it is not
     """
-    
+
     df_ngram_count_sarcastic = pd.read_csv(
         f"tonereader/data/ngram_sarcastic_count_{n}.csv", converters={"unique_values": literal_eval}
     )
@@ -126,7 +127,7 @@ def clean_comment(comment: str, nlp: spacy.Language = spacy.load('en_core_web_sm
         nlp (spacy.Language, optional): Instance of spacy language model. Defaults to spacy.load('en_core_web_sm').
 
     Returns:
-        list: List of cleaned up words from sentence 
+        list: List of cleaned up words from sentence
     """
     # Maybe implement stop word list?
 
@@ -228,7 +229,6 @@ def train_ngram(n: int):
 
 
 # Add smoothing later to take into account OOV words
-
 
 
 def is_sarcastic_helper(
