@@ -39,9 +39,6 @@ def is_sarcastic(text: str, n: int = 3) -> bool:
     )
 
 
-# Cleans comment for parsing
-
-
 # Remove emojis
 def remove_emojis(data: str) -> str:
     """Function that removes emojis from input string
@@ -104,8 +101,6 @@ def decontracted(phrase: str) -> str:
 
 
 # Lemmatizes sentence
-
-
 def lemmatize(text: str, nlp: spacy.Language = spacy.load('en_core_web_sm')) -> list:
     """Function that lemmatizes text
 
@@ -229,8 +224,6 @@ def train_ngram(n: int):
 
 
 # Add smoothing later to take into account OOV words
-
-
 def is_sarcastic_helper(
     text: str,
     n: int,
